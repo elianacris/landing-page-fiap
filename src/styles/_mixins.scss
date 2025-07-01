@@ -1,0 +1,17 @@
+@use 'variables' as v;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key(v.$breakpoints, $breakpoint) {
+    @media (max-width: map-get(v.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}`.";
+  }
+}
+
+@mixin container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
