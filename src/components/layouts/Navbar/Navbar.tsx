@@ -1,19 +1,40 @@
+"use client"
+import { useEffect, useRef } from "react";
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
-import logoFiap from "../../../assets/logo-fiap.svg";
 
 function Navbar() {
+  const progressRef = useRef<HTMLDivElement>(null);
+  const navbarRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    function handleScroll() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (progressRef.current) {
+        progressRef.current.style.width = `${progress}%`;
+      }
+      if (navbarRef.current) {
+        navbarRef.current.style.transform = `translateY(${scrollTop}px)`;
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className={styles.navbar}>
+    <nav className={styles.navbar} ref={navbarRef}>
       <div className={styles.container}>
         <Image
-          src={logoFiap}
+          src="/logo-fiap.svg"
           alt="Logo FIAP"
           className={styles.logoImg}
           width={48}
           height={16}
         />
       </div>
+      <div className={styles.progressBar} ref={progressRef} />
     </nav>
   );
 }
