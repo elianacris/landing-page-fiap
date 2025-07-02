@@ -1,0 +1,37 @@
+.homeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 43rem;
+  overflow: hidden;
+}
+
+.marqueeWrapper {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marqueeTrack {
+  display: inline-block;
+  white-space: nowrap;
+  border-bottom: 1px solid #ffffff;
+}
+
+.marqueeTrack span {
+  display: inline-block;
+  font-size: 8rem;
+  font-family: "Gotham HTF", sans-serif;
+  font-weight: 500;
+  color: white;
+  padding-right: 4rem;
+}
+
+@media (max-width: 768px) {
+  .marqueeTrack span {
+    font-size: 3rem;
+  }
+  .homeSection {
+    margin-top: 20rem;
+  }
+}
