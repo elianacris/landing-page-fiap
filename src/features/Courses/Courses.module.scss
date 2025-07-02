@@ -1,0 +1,118 @@
+$c-pink: #f80d5a;
+$c-white: #fff;
+$c-gray: #cfcfcf;
+
+.cursosSection {
+  padding: 4rem;
+  background: #000;
+  color: $c-white;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 4rem;
+
+  h1 {
+    font-size: 4.8rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.8rem;
+    color: $c-pink;
+    margin-top: 0.8rem;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.tabButton {
+  background: transparent;
+  color: $c-gray;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $c-white;
+  }
+
+  &.active {
+    color: $c-white;
+  }
+
+  .underline {
+    position: absolute;
+    bottom: -0.4rem;
+    left: 0;
+    height: 0.3rem;
+    width: 100%;
+    background: $c-pink;
+  }
+}
+
+.listaCursos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+
+.cursoItem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $c-white;
+  padding-bottom: 0.8rem;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $c-pink;
+  }
+}
+
+.cursoTipo {
+  font-size: 1.4rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.progressBar {
+  height: 0.4rem;
+  background: $c-pink;
+  width: 0%;
+  margin-top: 4rem;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cursoItemHover {
+  color: $c-pink;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0.4rem;
+  box-shadow: 0 2px 16px 0 rgba(248, 13, 90, 0.08);
+  transform: scale(1.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Responsivo
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 3.2rem;
+  }
+
+  .cursoItem {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

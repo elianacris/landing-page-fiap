@@ -56,16 +56,16 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <span ref={sobreRef} className={styles["sobre-bg"]}>
-        SOBRE
-      </span>
-      <div className={styles.frase}>
-        <span ref={melhorRef} className={styles.melhor}>
-          Melhor Faculdade
+        <span ref={sobreRef} className={styles["sobre-bg"]}>
+          SOBRE
         </span>
-        <span ref={tecnologiaRef} className={styles.tecnologia}>
-          de Tecnologia
-        </span>
+        <div className={styles.frase}>
+          <span ref={melhorRef} className={styles.melhor}>
+            A Melhor Faculdade
+          </span>
+          <span ref={tecnologiaRef} className={styles.tecnologia}>
+            de Tecnologia
+          </span>
       </div>
     </header>
   );

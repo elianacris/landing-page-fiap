@@ -1,5 +1,5 @@
-@use './variables' as *;
-@use './mixins' as *;
+@use "./variables" as *;
+@use "./mixins" as *;
 
 /* Base */
 html {
@@ -24,8 +24,8 @@ body {
   font-family: "Gotham HTF", Arial, Helvetica, sans-serif;
   font-size: $font-base;
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
 }
 
 /* Global reset */
@@ -60,7 +60,6 @@ p {
     padding: 0 1.2rem;
   }
 }
-
 
 @font-face {
   font-family: "Gotham HTF";

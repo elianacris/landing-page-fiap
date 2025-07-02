@@ -1,0 +1,112 @@
+$c-pink: #f80d5a;
+$c-white: #fff;
+$c-gray: #999;
+
+.faqSection {
+  background: #000;
+  color: $c-white;
+  padding: 4rem;
+
+  .header {
+    margin-bottom: 4rem;
+
+    h1 {
+      font-size: 4.8rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: $c-pink;
+      font-size: 1.8rem;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: 3rem;
+}
+
+.faqItem {
+  border-top: 0.2rem solid transparent;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+
+  h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: $c-gray;
+    line-height: 1.6;
+    max-width: 90%;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0.3rem;
+    width: 0%;
+    background: $c-pink;
+    transition: width 0.4s ease;
+  }
+
+  &:hover {
+    h3 {
+      color: $c-pink;
+    }
+
+    .progress {
+      width: 100%;
+    }
+  }
+
+  &.ativo .progress {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsivo
+@media (max-width: 768px) {
+  .faqSection {
+    padding: 2rem;
+  }
+
+  .header h1 {
+    font-size: 3.2rem;
+  }
+
+  .header p {
+    font-size: 1.6rem;
+  }
+
+  .faqItem {
+    h3 {
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}

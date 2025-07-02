@@ -15,9 +15,6 @@ function Navbar() {
       if (progressRef.current) {
         progressRef.current.style.width = `${progress}%`;
       }
-      if (navbarRef.current) {
-        navbarRef.current.style.transform = `translateY(${scrollTop}px)`;
-      }
     }
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
