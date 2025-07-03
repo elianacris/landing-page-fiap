@@ -50,10 +50,19 @@ A estrutura do projeto foi pensada para separar responsabilidades e facilitar a 
 
 ## Layout do Projeto
 ![image](https://github.com/user-attachments/assets/e779d699-8f67-4f37-8e28-70acdd797a99)
+
 ![image](https://github.com/user-attachments/assets/961aba35-e231-4669-b032-b25554c12dd6)
+
 ![image](https://github.com/user-attachments/assets/321bfddf-a53f-4d28-8232-6dd375c3e97c)
+
 ![image](https://github.com/user-attachments/assets/a109f359-a006-461a-bf67-8ae8f667ba9d)
+
 ![image](https://github.com/user-attachments/assets/55b23751-52ed-4e8d-8d21-7d7b34fa434f)
+
+![image](https://github.com/user-attachments/assets/8d7290df-8680-4d09-a64a-6de8153af3c5)
+![image](https://github.com/user-attachments/assets/f6c80d97-ab51-41f4-ba6e-bf989e6eb2b2)
+![image](https://github.com/user-attachments/assets/6c8eee5b-0869-4f18-9ea7-52146f0e7ee7)
+
 
 ## Como Executar o Projeto
 
