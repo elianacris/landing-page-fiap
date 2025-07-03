@@ -54,13 +54,9 @@ A estrutura do projeto foi pensada para separar responsabilidades e facilitar a 
 
 ```bash
 npm install
-# ou
-yarn install
-# ou
-pnpm install
-# ou
-bun install
 ```
+
+> **Observação:** O gerenciador de pacotes utilizado neste projeto é o **npm**. Caso prefira, também pode utilizar yarn, pnpm ou bun, mas o padrão é npm.
 
 2. Inicie o servidor de desenvolvimento:
 
@@ -87,4 +83,3 @@ A maneira mais fácil de fazer o deploy é utilizando a [Vercel](https://vercel.
 - [Repositório no GitHub](https://github.com/vercel/next.js)
 
 ---
-Projeto desenvolvido para fins educacionais na FIAP.
