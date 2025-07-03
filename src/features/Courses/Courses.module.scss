@@ -26,7 +26,21 @@ $c-gray: #cfcfcf;
   gap: 10rem;
 }
 
+.headerTabsRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 100%;
+}
+
 .header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+
   h1 {
     font-family: "Gotham HTF", sans-serif;
     font-weight: 500;
@@ -50,6 +64,7 @@ $c-gray: #cfcfcf;
 .tabs {
   display: flex;
   gap: 3rem;
+  align-items: flex-end;
 }
 
 .tabWrapper {
@@ -94,21 +109,22 @@ $c-gray: #cfcfcf;
   }
 }
 
-.containerList {
+.listContainer {
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
   gap: 6rem;
+  align-items: flex-start;
 }
 
-.listaCursos {
+.coursesList {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 60%;
+  width: 100%;
+  min-width: 340px;
 }
 
-.cursoItem {
+.courseItem {
   display: flex;
   gap: 18px;
   align-items: center;
@@ -117,12 +133,29 @@ $c-gray: #cfcfcf;
   font-size: 1.8rem;
   transition: all 0.3s ease;
   color: $c-gray;
+  min-height: 48px;
+  width: 100%;
+  box-sizing: border-box;
   &:hover {
     color: $c-pink;
   }
 }
 
-.cursoTipo {
+.animatingItem {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  border-bottom: 1px solid $c-white;
+  padding-bottom: 0.8rem;
+  font-size: 1.8rem;
+  color: $c-gray;
+  background: transparent;
+  min-height: 48px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.courseType {
   font-size: 1.4rem;
   opacity: 0.7;
   text-transform: uppercase;
@@ -151,13 +184,13 @@ $c-gray: #cfcfcf;
 }
 
 .fadeIn {
-  animation: fadeInCursos 0.35s;
+  animation: fadeInCourses 0.35s;
 }
 .fadeOut {
-  animation: fadeOutCursos 0.35s;
+  animation: fadeOutCourses 0.35s;
 }
 
-@keyframes fadeInCursos {
+@keyframes fadeInCourses {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -167,7 +200,7 @@ $c-gray: #cfcfcf;
     transform: translateY(0);
   }
 }
-@keyframes fadeOutCursos {
+@keyframes fadeOutCourses {
   from {
     opacity: 1;
     transform: translateY(0);
@@ -178,11 +211,11 @@ $c-gray: #cfcfcf;
   }
 }
 
-.categoriaTitulo {
+.categoryTitle {
   font-family: "Gotham HTF", sans-serif;
   font-weight: 500;
-  font-size: 3.4375rem; // 55px = 3.4375rem
-  line-height: 1.875rem; // 30px = 1.875rem
+  font-size: 3.4375rem;
+  line-height: 1.875rem;
   letter-spacing: -0.03em;
   text-transform: capitalize;
   color: $c-white;
@@ -190,13 +223,72 @@ $c-gray: #cfcfcf;
   text-align: left;
 }
 
-// Responsivo
+.desktopOnly {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5rem;
+}
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktopOnly {
+    display: none !important;
+  }
+  .mobileOnly {
+    display: block !important;
+    width: 100%;
+  }
+  .listContainer {
+    display: none !important;
+  }
+}
+
+.accordionItem {
+  border-bottom: 1px solid $c-white;
+  margin-bottom: 2rem;
+}
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+}
+.accordionToggle {
+  width: 3.6rem;
+  height: 3.6rem;
+  border: 2px solid #f80d5a;
+  border-radius: 50%;
+  color: #f80d5a;
+  background-color: transparent;
+  font-size: 2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &.open {
+    background-color: #f80d5a;
+    color: #000;
+    border: none;
+  }
+  @media (max-width: 768px) {
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 1.8rem;
+  }
+}
+
 @media (max-width: 768px) {
   .header h1 {
     font-size: 3.2rem;
   }
 
-  .cursoItem {
+  .courseItem {
     flex-direction: column;
     gap: 0.4rem;
   }
@@ -205,4 +297,34 @@ $c-gray: #cfcfcf;
     flex-direction: column;
     gap: 1rem;
   }
+
+  .coursesList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .courseItem {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .headerTabsRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .tabs {
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.animatingList {
+  position: relative;
 }
