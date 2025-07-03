@@ -1,20 +1,29 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import gsap from "gsap";
 import styles from "./Courses.module.scss";
 
 const categorias = {
   tecnologia: [
-    "Big Data Ecosystem",
-    "Creating Dashboards for BI",
-    "Big Data Science - Machine Learning & Data Mining",
-    "Storytelling",
+    { name: "Big Data Ecosystem", typeOfClass: "REMOTO • LIVE" },
+    { name: "Creating Dashboards for BI", typeOfClass: "REMOTO • LIVE" },
+    {
+      name: "Big Data Science - Machine Learning & Data Mining",
+      typeOfClass: "REMOTO • LIVE • MULTIMÍDIA",
+    },
+    { name: "Storytelling", typeOfClass: "REMOTO • LIVE" },
   ],
-  inovacao: ["UX", "UX Writing", "Storytelling para Negócios", "Chatbots"],
+  inovacao: [
+    { name: "UX", typeOfClass: "DIGITAL" },
+    { name: "UX Writing", typeOfClass: "LIVE" },
+    { name: "Storytelling para Negócios", typeOfClass: "LIVE" },
+    { name: "Chatbots", typeOfClass: "LIVE" },
+  ],
   negocios: [
-    "Agile Culture",
-    "DPO Data Protection Officer",
-    "IT Business Partner",
-    "Perícia Forense Computacional",
+    { name: "Agile Culture", typeOfClass: "DIGITAL" },
+    { name: "DPO Data Protection Officer", typeOfClass: "LIVE" },
+    { name: "IT Business Partner", typeOfClass: "LIVE" },
+    { name: "Perícia Forense Computacional", typeOfClass: "LIVE" },
   ],
 } as const;
 
@@ -23,57 +32,111 @@ type CategoriaKey = keyof typeof categorias;
 export default function Courses() {
   const [categoriaAtiva, setCategoriaAtiva] =
     useState<CategoriaKey>("tecnologia");
-  const [cursoHover, setCursoHover] = useState<number | null>(null);
+  const [categoriaHover, setCategoriaHover] = useState<CategoriaKey | null>(
+    null
+  );
+  const [categoriaAnimada, setCategoriaAnimada] =
+    useState<CategoriaKey>("tecnologia");
+  const listaRef = useRef<HTMLDivElement>(null);
+  const nomesCategorias = Object.keys(categorias) as CategoriaKey[];
 
-  const cursos = categorias[categoriaAtiva];
-  const progresso =
-    cursoHover !== null && cursos.length > 1
-      ? ((cursoHover + 1) / cursos.length) * 100
-      : cursoHover === 0
-      ? 100 / cursos.length
-      : 0;
+  const cursos = categorias[categoriaAnimada];
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const tituloRef = useRef<HTMLHeadingElement | null>(null);
+
+  function animateListOut(onComplete: () => void) {
+    const allRefs = [tituloRef.current, ...itemRefs.current].filter(Boolean);
+    if (!allRefs.length) return onComplete();
+    gsap.to(allRefs, {
+      opacity: 0,
+      y: 40,
+      stagger: 0.07,
+      duration: 0.35,
+      onComplete,
+    });
+  }
+  function animateListIn() {
+    const allRefs = [tituloRef.current, ...itemRefs.current].filter(Boolean);
+    gsap.fromTo(
+      allRefs,
+      { opacity: 0, y: -40 },
+      { opacity: 1, y: 0, stagger: 0.07, duration: 0.35 }
+    );
+  }
+
+  function handleTabHover(cat: CategoriaKey) {
+    if (cat === categoriaAnimada) return;
+    animateListOut(() => {
+      setCategoriaAnimada(cat);
+      setTimeout(() => animateListIn(), 10);
+    });
+    setCategoriaHover(cat);
+  }
+  function handleTabsLeave() {
+    setCategoriaHover(null);
+    animateListOut(() => {
+      setCategoriaAnimada(categoriaAtiva);
+      setTimeout(() => animateListIn(), 10);
+    });
+  }
+  function handleTabClick(cat: CategoriaKey) {
+    setCategoriaAtiva(cat);
+    setCategoriaHover(null);
+  }
 
   return (
-    <section className={styles.cursosSection}>
-      <div className={styles.header}>
-        <h1>Cursos</h1>
-        <p>Cursos de Curta Duração</p>
-      </div>
+    <section className={styles.coursesSection}>
+      <div className={styles.coursesContainer}>
+        <div className={styles.header}>
+          <h1>Cursos</h1>
+          <p>Cursos de Curta Duração</p>
+        </div>
 
-      <div className={styles.tabs}>
-        {Object.keys(categorias).map((categoria) => (
-          <button
-            key={categoria}
-            className={`${styles.tabButton} ${
-              categoriaAtiva === categoria ? styles.active : ""
-            }`}
-            onClick={() => setCategoriaAtiva(categoria as CategoriaKey)}
-          >
-            {categoria.toUpperCase()}
-            {categoriaAtiva === categoria && (
-              <span className={styles.underline} />
-            )}
-          </button>
-        ))}
+        <div className={styles.tabs} onMouseLeave={handleTabsLeave}>
+          {nomesCategorias.map((categoria) => {
+            const isActive = categoriaHover
+              ? categoriaHover === categoria
+              : categoriaAtiva === categoria;
+            return (
+              <div key={categoria} className={styles.tabWrapper}>
+                <div
+                  className={`${styles.progressBarTab} ${
+                    isActive ? styles.progressBarTabActive : ""
+                  }`}
+                />
+                <button
+                  className={`${styles.tabButton} ${
+                    isActive ? styles.active : ""
+                  }`}
+                  onMouseEnter={() => handleTabHover(categoria)}
+                  onClick={() => handleTabClick(categoria)}
+                >
+                  {categoria.toUpperCase()}
+                </button>
+              </div>
+            );
+          })}
+        </div>
       </div>
-
-      <div className={styles.listaCursos}>
-        {cursos.map((curso, idx) => (
-          <div
-            key={idx}
-            className={`${styles.cursoItem} ${
-              cursoHover === idx ? styles.cursoItemHover : ""
-            }`}
-            onMouseEnter={() => setCursoHover(idx)}
-            onMouseLeave={() => setCursoHover(null)}
-          >
-            <span className={styles.cursoNome}>{curso}</span>
-            <span className={styles.cursoTipo}>REMOTO • LIVE</span>
-          </div>
-        ))}
+      <div ref={listaRef} className={styles.containerList}>
+        <h2 className={styles.categoriaTitulo} ref={tituloRef}>
+          {categoriaAnimada.toUpperCase()}
+        </h2>
+        <div className={styles.listaCursos}>
+          {cursos.map((curso, idx) => (
+            <div
+              key={idx}
+              className={styles.cursoItem}
+              ref={(el) => {
+                itemRefs.current[idx] = el;
+              }}
+            >
+              <span className={styles.cursoNome}>{curso.name}</span>
+              <span className={styles.cursoTipo}>{curso.typeOfClass}</span>
+            </div>
+          ))}
+        </div>
       </div>
-
-      <div className={styles.progressBar} style={{ width: `${progresso}%` }} />
     </section>
   );
 }

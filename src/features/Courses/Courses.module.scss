@@ -2,32 +2,80 @@ $c-pink: #f80d5a;
 $c-white: #fff;
 $c-gray: #cfcfcf;
 
-.cursosSection {
+.coursesSection {
   padding: 4rem;
+  margin-top: 2rem;
   background: #000;
   color: $c-white;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8rem;
+}
+
+.coursesContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.coursesHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
 }
 
 .header {
-  margin-bottom: 4rem;
-
   h1 {
-    font-size: 4.8rem;
-    font-weight: 700;
+    font-family: "Gotham HTF", sans-serif;
+    font-weight: 500;
+    font-size: 5.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    vertical-align: middle;
   }
 
   p {
-    font-size: 1.8rem;
+    font-family: "Gotham HTF", sans-serif;
+    font-weight: 500;
+    font-size: 1.375rem;
+    line-height: 1.6875rem;
+    letter-spacing: 0.03em;
+    vertical-align: middle;
     color: $c-pink;
-    margin-top: 0.8rem;
   }
 }
 
 .tabs {
   display: flex;
   gap: 3rem;
-  margin-bottom: 3rem;
+}
+
+.tabWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.progressBarTab {
+  width: 0%;
+  height: 0.3rem;
+  background: $c-pink;
+  border-radius: 2px 2px 0 0;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+  opacity: 0;
+  margin-bottom: 0.5rem;
+}
+
+.progressBarTabActive {
+  width: 100%;
+  opacity: 1;
 }
 
 .tabButton {
@@ -38,40 +86,37 @@ $c-gray: #cfcfcf;
   cursor: pointer;
   position: relative;
   transition: color 0.3s;
+  padding-bottom: 0.6rem;
 
-  &:hover {
-    color: $c-white;
-  }
-
+  &:hover,
   &.active {
     color: $c-white;
   }
+}
 
-  .underline {
-    position: absolute;
-    bottom: -0.4rem;
-    left: 0;
-    height: 0.3rem;
-    width: 100%;
-    background: $c-pink;
-  }
+.containerList {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  gap: 6rem;
 }
 
 .listaCursos {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
-  margin-top: 2rem;
+  justify-content: space-between;
+  width: 60%;
 }
 
 .cursoItem {
   display: flex;
-  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
   border-bottom: 1px solid $c-white;
   padding-bottom: 0.8rem;
   font-size: 1.8rem;
   transition: all 0.3s ease;
-
+  color: $c-gray;
   &:hover {
     color: $c-pink;
   }
@@ -83,21 +128,66 @@ $c-gray: #cfcfcf;
   text-transform: uppercase;
 }
 
+.progressBarWrapper {
+  width: 100%;
+  height: 0.4rem;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+  position: relative;
+  background: transparent;
+}
+
 .progressBar {
   height: 0.4rem;
   background: $c-pink;
   width: 0%;
-  margin-top: 4rem;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
 }
 
-.cursoItemHover {
-  color: $c-pink;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 0.4rem;
-  box-shadow: 0 2px 16px 0 rgba(248, 13, 90, 0.08);
-  transform: scale(1.03);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.progressBarActive {
+  opacity: 1;
+}
+
+.fadeIn {
+  animation: fadeInCursos 0.35s;
+}
+.fadeOut {
+  animation: fadeOutCursos 0.35s;
+}
+
+@keyframes fadeInCursos {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOutCursos {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.categoriaTitulo {
+  font-family: "Gotham HTF", sans-serif;
+  font-weight: 500;
+  font-size: 3.4375rem; // 55px = 3.4375rem
+  line-height: 1.875rem; // 30px = 1.875rem
+  letter-spacing: -0.03em;
+  text-transform: capitalize;
+  color: $c-white;
+  margin-bottom: 2.2rem;
+  text-align: left;
 }
 
 // Responsivo
