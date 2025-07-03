@@ -4,10 +4,11 @@ import TextBox from "@/features/TextBox/TextBox";
 import ImageContainer from "@/features/ImageContainer/ImageContainer";
 import Courses from "@/features/Courses/Courses";
 import FAQ from "@/features/FAQ/FAQ";
+import styles from "./HomePage.module.scss";
 
 function HomePage() {
   return (
-    <div>
+    <div className={styles.container}>
       <Navbar />
       <Header />
       <TextBox />

@@ -1,9 +1,8 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
-/* Base */
 html {
-  font-size: 62.5%; // 1rem = 10px
+  font-size: 62.5%; 
 }
 
 :root {
@@ -24,11 +23,8 @@ body {
   font-family: "Gotham HTF", Arial, Helvetica, sans-serif;
   font-size: $font-base;
   line-height: 1.6;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
 }
 
-/* Global reset */
 * {
   margin: 0;
   padding: 0;
@@ -40,7 +36,6 @@ a {
   text-decoration: none;
 }
 
-/* Responsivo com mixins */
 h1 {
   font-size: clamp(2.8rem, 3vw + 1rem, 5rem);
 }

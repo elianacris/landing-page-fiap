@@ -1,5 +1,8 @@
 .navbar {
-  width: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background: #202121;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   position: sticky;
@@ -7,6 +10,7 @@
   z-index: 100;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  overflow-x: hidden;
 
   .progressBar {
     position: absolute;
@@ -34,5 +38,78 @@
     display: block;
     height: 2.4rem;
     width: auto;
+  }
+}
+
+@media (max-width: 3840px) {
+  .navbar .container {
+    height: 7rem;
+  }
+  .logoImg {
+    height: 3.2rem;
+  }
+}
+@media (max-width: 2560px) {
+  .navbar .container {
+    height: 6.5rem;
+  }
+  .logoImg {
+    height: 2.8rem;
+  }
+}
+@media (max-width: 1920px) {
+  .navbar .container {
+    height: 6rem;
+  }
+  .logoImg {
+    height: 2.4rem;
+  }
+}
+@media (max-width: 1600px) {
+  .navbar .container {
+    height: 5.2rem;
+  }
+  .logoImg {
+    height: 2.1rem;
+  }
+}
+@media (max-width: 1440px) {
+  .navbar .container {
+    height: 4.8rem;
+  }
+  .logoImg {
+    height: 1.8rem;
+  }
+}
+@media (max-width: 1366px) {
+  .navbar .container {
+    height: 4.2rem;
+  }
+  .logoImg {
+    height: 1.6rem;
+  }
+}
+@media (max-width: 1280px) {
+  .navbar .container {
+    height: 3.8rem;
+  }
+  .logoImg {
+    height: 1.4rem;
+  }
+}
+@media (max-width: 1024px) {
+  .navbar .container {
+    height: 3.2rem;
+  }
+  .logoImg {
+    height: 1.2rem;
+  }
+}
+@media (max-width: 414px) {
+  .navbar .container {
+    height: 2.8rem;
+  }
+  .logoImg {
+    height: 1rem;
   }
 }

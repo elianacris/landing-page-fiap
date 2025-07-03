@@ -1,7 +1,6 @@
 .container {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +46,7 @@
   font-weight: 700;
   text-transform: uppercase;
   color: transparent;
-  -webkit-text-stroke: 1px #ffffff; 
+  -webkit-text-stroke: 1px #ffffff;
   white-space: nowrap;
   line-height: 1.2;
   text-align: center;
@@ -64,14 +63,13 @@
 
 .outlinedSectionRodape {
   position: absolute;
-  bottom: 4rem; // Fica acima do rodapé da imagem
+  bottom: -5rem;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
   z-index: 2;
   pointer-events: none;
   background: none;
@@ -83,4 +81,51 @@
   flex-direction: row;
   gap: 2rem;
   width: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: none !important;
+  }
+}
+
+@media (max-width: 3840px) {
+  .outlinedText {
+    font-size: 10rem;
+  }
+}
+@media (max-width: 2560px) {
+  .outlinedText {
+    font-size: 8rem;
+  }
+}
+@media (max-width: 1920px) {
+  .outlinedText {
+    font-size: 8rem;
+  }
+}
+@media (max-width: 1600px) {
+  .outlinedText {
+    font-size: 8rem;
+  }
+}
+@media (max-width: 1440px) {
+  .outlinedText {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 1366px) {
+  .outlinedText {
+    font-size: 8rem;
+  }
+}
+@media (max-width: 1280px) {
+  .outlinedText {
+    font-size: 8rem;
+  }
+}
+@media (max-width: 1024px) {
+  .outlinedText {
+    font-size: 4rem;
+  }
 }

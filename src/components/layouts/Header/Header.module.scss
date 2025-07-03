@@ -1,6 +1,8 @@
 .header {
-  width: 100%;
-  height: 50vh;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -9,9 +11,7 @@
   position: relative;
   background: transparent;
   overflow: hidden;
-  // top: 55rem
   margin-top: 28rem;
-  // left: 32.1rem;
 }
 
 .sobre-bg {
@@ -36,7 +36,6 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  // align-items: center;
   margin-bottom: 12rem;
   margin-left: 8rem;
   gap: 1rem;
@@ -48,7 +47,6 @@
   font-weight: 500;
   font-size: 6.875rem;
   letter-spacing: -5%;
-  // margin-bottom: -0.6rem;
   line-height: 4.8125rem;
 }
 
@@ -57,21 +55,76 @@
   font-family: "Gotham HTF", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 6.875rem;
-  // letter-spacing: 0.02em;
-  // margin-top: -0.6rem;
   letter-spacing: -5%;
   margin-left: -6.5rem;
   line-height: 4.8125rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1600px) {
+  .sobre-bg {
+    font-size: 21.875rem;
+  }
+  .melhor,
+  .tecnologia {
+    font-size: 6.875rem;
+  }
+}
+@media (max-width: 1440px) {
+  .sobre-bg {
+    font-size: 20rem;
+  }
+  .melhor,
+  .tecnologia {
+    font-size: 6.875rem;
+  }
+}
+@media (max-width: 1366px) {
+  .sobre-bg {
+    font-size: 20rem;
+  }
+  .melhor,
+  .tecnologia {
+    font-size: 6.875rem;
+  }
+}
+@media (max-width: 1280px) {
+  .sobre-bg {
+    font-size: 21.875rem;
+  }
+  .melhor,
+  .tecnologia {
+    font-size: 6.875rem;
+  }
+}
+@media (max-width: 1024px) {
+  .sobre-bg {
+    font-size: 10rem;
+  }
+  .melhor,
+  .tecnologia {
+    font-size: 6.875rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sobre-bg {
+    font-size: 8rem;
+  }
+  .melhor,
+  .tecnologia {
+    font-size: 4.5rem;
+  } 
+  
+}
+
+@media (max-width: 414px) {
   .sobre-bg {
     font-size: 5rem;
   }
   .melhor,
   .tecnologia {
-    font-size: 2.2rem;
-    margin-bottom: -0.3rem;
-    margin-top: -0.3rem;
+    font-size: 2rem;
   }
 }
+
+

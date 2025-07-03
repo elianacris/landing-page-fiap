@@ -58,7 +58,6 @@ export default function Courses() {
   function animateListOut(onComplete: () => void) {
     const allRefs = [titleRef.current, ...itemRefs.current].filter(Boolean);
     if (!allRefs.length) return onComplete();
-    // Fixar altura do container
     if (listRef.current) {
       setContainerHeight(listRef.current.offsetHeight);
     }
