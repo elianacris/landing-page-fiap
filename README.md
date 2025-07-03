@@ -47,6 +47,7 @@ A estrutura do projeto foi pensada para separar responsabilidades e facilitar a 
   - `TextBox/`: Apresenta textos animados, utilizando GSAP para efeitos visuais.
 - **public/**: Armazena imagens, fontes (como Gotham HTF) e outros arquivos estáticos acessíveis pela aplicação.
 - **styles/**: Contém arquivos Sass para estilos globais, variáveis, mixins e breakpoints, promovendo padronização visual e responsividade.
+
 ## Layout do Projeto
 ![image](https://github.com/user-attachments/assets/e779d699-8f67-4f37-8e28-70acdd797a99)
 ![image](https://github.com/user-attachments/assets/961aba35-e231-4669-b032-b25554c12dd6)
